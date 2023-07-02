@@ -1,7 +1,7 @@
 /*
 Driver for MAX6675 using SPI interface of ESP32 or bit banging.
 
-Maxim Integrated MAX6675 is a Cold-Junction-Compensated K-Thermocouple-to-Digital Converter
+Maxim Integrated MAX6675 is a cold junction compensated K-thermocouple to-digital converter
 able to read temperatures in range from 0°C to +1024°C.
 MAX6675 datasheet: https://datasheets.maximintegrated.com/en/ds/MAX6675.pdf
 
@@ -27,9 +27,9 @@ class Measurement:
   constructor .temperature .sensor_health:
 
 /**
-Driver for the Maxim Integrated MAX6675
-Cold-Junction-Compensated K-Thermocouple-to-Digital Converter.
-(0°C to +1024°C)
+SPI serial device driver to read raw data from the Maxim Integrated MAX6675.
+MAX6675 is a cold junction compensated K-thermocouple to-digital converter
+able to read temperatures in range from 0°C to +1024°C.
 https://datasheets.maximintegrated.com/en/ds/MAX6675.pdf
 */
 class Driver:
@@ -55,7 +55,7 @@ class Driver:
       sensor_health = true
     /*
     The first bit, D15, is a dummy sign bit and is always zero.
-    Bits D14–D3 contain the converted temperature in the order of MSB to LSB.
+    Bits D14–D3 contain the converted temperature in the order from MSB to LSB.
     */
     value = value >> 3  // remove not relevant bits
     temperature := value * 0.25
@@ -63,9 +63,9 @@ class Driver:
 
 
 /**
-Bit bang SPI serial device to read raw data for the Maxim Integrated MAX6675
-Cold-Junction-Compensated K-Thermocouple-to-Digital Converter.
-(0°C to +1024°C)
+Bit bang SPI serial device driver to read raw data from the Maxim Integrated MAX6675.
+MAX6675 is a cold junction compensated K-thermocouple to-digital converter
+able to read temperatures in range from 0°C to +1024°C.
 https://datasheets.maximintegrated.com/en/ds/MAX6675.pdf
 */
 class DriverBitBang implements serial.Device:
@@ -97,7 +97,7 @@ class DriverBitBang implements serial.Device:
           data[byte] = data[byte] | 0b0000_0001
         sck_.set 1
         sleep --ms=1
-        sck_.set 0   // Data is changed in failing edge
+        sck_.set 0   // Data is changed on failing edge
         sleep --ms=1
     cs_.set 1
     return data

@@ -1,5 +1,5 @@
 /*
-Example of reading temperature using MAX6675 over SPI interface of ESP32.
+Example of reading temperature from MAX6675 over the native SPI interface of ESP32.
 */
 
 import gpio

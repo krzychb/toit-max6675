@@ -1,5 +1,5 @@
 /*
-Example of reading temperature using MAX6675 using bit banging of ESP32 pins.
+Example of reading temperature from MAX6675 over SPI interface implemented using bit banging of ESP32 pins.
 */
 
 import gpio
