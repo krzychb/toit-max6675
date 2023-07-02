@@ -11,7 +11,7 @@ jag pkg install github.com/krzychb/toit-max6675
 
 # Usage
 
-The following example is using GPIO pin banging.
+The following example is using bit banging of GPIO pins.
 
 ```toit
 import gpio
@@ -46,6 +46,11 @@ See [max6675.toit](examples/max6675.toit) for an example of reading the temperat
 - [ESP32](https://www.espressif.com.cn/) is a feature-rich MCU with integrated Wi-Fi and Bluetooth connectivity for a wide range of applications.
 
 
-## Resources
+# Resources
 
 - [MAX6675 Cold-Junction-Compensated K-Thermocouple-to-Digital Converter (datasheet)](https://datasheets.maximintegrated.com/en/ds/MAX6675.pdf)
+
+
+# Acknowledgments
+
+- [Florian Loitsch](https://github.com/floitsch) was extremely helpful providing me with several tips on how to implement the driver.
